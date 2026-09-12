@@ -2,56 +2,68 @@
 
 [English](README.md)
 
-AckPulse 将 Mac 上 coding agent 的通知与审批操作发送到 iPhone 和 Apple Watch。
+AckPulse 将 Mac 上 coding agent 的通知与权限审批发送到 iPhone 和 Apple Watch。
 
-> **Beta：** AckPulse 面向 coding agent 工作流设计，但当前测试版只集成了 Claude Code，尚不支持其他 agent。
+> **Beta：** 当前测试版集成 Claude Code，尚不支持其他 agent。
 
 ## 使用要求
 
-- macOS 14 或更高版本。当前 Mac 测试版是同时支持 Apple 芯片和 Intel Mac 的 Universal 构建。
-- iOS 17 或更高版本；使用 Apple Watch 时需要 watchOS 10 或更高版本。
-- 通过 TestFlight 安装的 AckPulse iPhone App，以及 AckPulse for Mac。
-- Mac 和 iPhone 都能访问的可信局域网。使用 Apple Watch 通知镜像时还应打开蓝牙。
-- 当前测试版需要在 Mac 上安装 Claude Code。
+- macOS 14 或更高版本；Mac App 同时支持 Apple 芯片和 Intel Mac。
+- iOS 17 或更高版本；Apple Watch 可选，需要 watchOS 10 或更高版本。
+- 从 TestFlight 安装 iPhone App，并安装 AckPulse for Mac；三端统一使用 **0.1.3**。
+- Mac 与 iPhone 能相互访问的可信局域网。Watch 通知镜像还需保持蓝牙开启。
+- 使用集成时，Mac 上需已安装并至少运行过一次 Claude Code。
 
 ## 下载
 
-请从本仓库的 [Releases](../../releases) 页面下载 AckPulse for Mac。当前审核组合为 Mac `0.1.2 (2)` 与 iPhone、Watch 的 TestFlight 构建 `0.1.2 (1)`。Mac App 已签名并经过 Apple 公证。
+下载已签名并公证的 [AckPulse for Mac 0.1.3 DMG](../../releases/tag/0.1.3)。配套版本为 Mac **0.1.3 (3)** 与 iPhone、Watch TestFlight 构建 **0.1.3 (1)**。测试前一起更新三端，不支持与旧版混用。
 
-Mac App 不会自动更新。更新时，请退出 AckPulse，用较新的 Release 替换 `/Applications` 中的 App，然后重新打开。
+TestFlight 是否可安装取决于你所在的测试组及 Apple 的处理或审核状态。下载 Mac 版本不会自动获得 iPhone 测试资格。
+
+## 安装和更新
+
+1. 打开下载的 DMG，将 **AckPulse** 拖入 **应用程序**。
+2. 推出磁盘映像，从 `/Applications` 打开 AckPulse。
+3. 按 Mac 主窗口的“概览”提示连接 iPhone、选择项目。
+
+更新时先处理完等待中的审批，再从菜单选择“退出 AckPulse”，用新版 DMG 替换 App。关闭窗口不会退出服务。替换 App 不会主动删除配对、项目或语言偏好；App 暂无自动更新功能。
+
+若集成仍指向旧位置，在“集成 → 检查并修复…”中核对旧路径，再确认修复。请将 App 保留在“应用程序”中；从磁盘映像运行时无法连接 Claude Code。
 
 ## 设置并测试一次审批
 
-1. 下载并解压 Mac Release。**首次打开前**先把 `AckPulse.app` 移到 `/Applications`，再正常打开；AckPulse 会出现在菜单栏。
-2. 在 iPhone 上打开 TestFlight 构建，允许**通知**和**本地网络**权限，并让 iPhone 与 Mac 保持在同一个可信网络中。
-3. 在 Mac 上展开 **Paired iPhones**，选择 **Generate new pairing code**。在 iPhone 的 **Discovered on LAN** 中选择这台 Mac（也可手工填写地址），输入六位配对码和设备标签，再选择 **Pair with Mac**。
-4. 在 Mac 菜单的 **Routed projects** 下添加测试项目。在 **Agents** 下启用 **Claude Code**，再启用 **Hold Bash commands for approval — BETA**。启用 agent 时，AckPulse 会为 Claude Code 设置添加 hooks；如果已有设置文件，则会在修改前先备份该文件。
-5. 确认 iPhone 显示 **Connected**，并且最近事件中出现 **Uploaded APNs registration to Mac**。
-6. 在刚才路由的项目中启动 Claude Code，让它执行一条无害的 Bash 命令，例如 `pwd`。在 iPhone 或 Apple Watch 上选择 **Approve** 或 **Deny**，再确认 Claude Code 按该结果继续。
+1. Mac 打开“设备 → 添加 iPhone”，选择局域网地址并生成配对码。
+2. iPhone 点“扫描二维码”，扫描 Mac 上的码。相机权限可选；也可点“手动连接”，填写 Mac 显示的地址、端口和六位码。按提示允许本地网络权限，配对后允许通知。
+3. 确认 iPhone 已连接到目标 Mac。在 Mac“项目”页添加测试文件夹，子目录也会包含在内。
+4. 在“集成”开启“连接 Claude Code”，检查“远程权限审批”已开启。首次连接会一并开启提醒子项；AckPulse 修改 hooks 前会备份已有 Claude 设置。
+5. 在该文件夹启动 Claude Code，使用会询问权限的模式，让它执行确实需要权限的无害操作，例如创建一个临时测试文件。已获允许的命令可能不会触发审批。
+6. 在 iPhone App 选择“批准”或“拒绝”，或长按通知选择操作。锁屏 iPhone、佩戴并解锁配对的 Watch 后，也测试手表上的镜像通知。
 
-当前审批选项会拦住路由项目中的**每一条** Bash 调用，包括 Claude Code 原本可能不会询问的调用。如果日常不需要这一行为，测试后请关闭该选项。主 **Claude Code** 选项可以继续保留，用于接收非阻塞的完成和输入提醒。
+AckPulse 转发 Claude 自身针对各类工具的权限请求。终端权限对话框仍可回答，先响应的一端决定结果。批准可能让对应操作在 Mac 上执行；Claude 的显式禁止规则仍然有效。终端先答后，远程待办可能保留到 Claude 当前回合结束。
+
+也支持等待、提问、计划和完成提醒。提问及计划需回到 Claude 中回答，目前不能从手机或手表回传答案。权限请求等待期间可能额外收到一条等待提醒。
 
 ## 当前限制
 
-- 每个 iPhone 安装实例同一时间只能与一台 Mac 保持活动配对；一台 Mac 可以配对多台 iPhone。
-- Mac 与 iPhone 之间的局域网流量使用未加密 HTTP。请只在可信网络中使用 AckPulse。
-- 锁屏和 Apple Watch 提醒依赖 Mac 的互联网连接及外部通知服务。如果这些服务失败，直接连接 Mac 的前台 iPhone 仍可能继续收到事件。不保证通知一定送达或补发。
-- Mac App 没有自动更新机制，需要从 Releases 手工安装更新。
+- 一台 iPhone 安装实例保留一个活动 Mac 配对；一台 Mac 可配对多台 iPhone。
+- Mac 与 iPhone 的局域网流量使用未加密 HTTP，请只在可信网络使用。
+- 锁屏和 Watch 提醒依赖 Mac 的互联网连接及通知服务。推送失败时，已连接的前台 iPhone 仍可接收本地事件。不保证通知送达或重放。
+- 审批需要仍有效的请求及与配对 Mac 的连接。旧通知和最近记录不会产生新的审批机会。
+- 最近记录在本地保留七天，未结束的审批保留至结束。返回 App 可补齐错过的记录，缓存记录可离线阅读。
+- 更新需手工安装，请保持三端版本配套。
 
 ## 排障
 
-**iPhone 找不到 Mac：** 确认两台设备都能访问同一个局域网，并在 iPhone“设置”→ AckPulse 中开启“本地网络”权限，然后重新打开 iPhone App。如果仍找不到 Mac，请在 **Manual host / port** 中填写 Mac 的局域网地址和端口 `37645`。
+**找不到或连不上 Mac：** 检查本地网络权限及网络隔离，再用“手动连接”输入 Mac 显示的地址与端口。默认端口为 `37645`，若界面显示不同端口，以界面为准。配对码过期后重新生成。
 
-**配对成功但推送未登记：** 在 iPhone 最近事件中查找 **Uploaded APNs registration to Mac**。如果没有，请在 iPhone“设置”→ AckPulse 中允许通知，彻底关闭并重新打开 App，再重新连接。Mac 上的 **Push registrations** 应大于零。
+**已连接但没有锁屏通知：** 在 iPhone 系统设置允许通知，重新打开 AckPulse 并重连。检查手机“设置 → 诊断”的推送登记状态，以及 Mac“设备”页的通知登记数量。局域网已连接不代表推送登记成功。
 
-**Mac 显示 Pending，但没有收到提醒：** 局域网连接正常不代表远程通知一定能送达。请检查 Mac 的互联网连接，并确认 **Push registrations** 大于零。锁屏和 Watch 提醒失败时，前台局域网路径可能仍然正常。
+**没有审批请求：** 确认文件夹位于“项目”列表，集成和远程权限审批已开启，且 Claude 确实正在询问权限。Claude 已允许的操作不会产生远程审批。若 hooks 指向旧 App，在“集成 → 检查并修复…”中检查。
 
-**Hooks 没有产生事件：** 保持 AckPulse 位于 `/Applications`，确认项目已列在 **Routed projects** 中，并检查 Claude Code 选项。如果 AckPulse 提示 hooks 仍指向旧位置，请使用 **Fix**。
-
-**切换到另一台 Mac：** 先在 iPhone 上使用 **Change Mac** 或 **Remove pairing**。如果旧 Mac 无法访问，AckPulse 会先说明残留通知风险，再提供 **Forget previous Mac and continue**。旧 Mac 恢复可用后，请在旧 Mac 上移除这台 iPhone。
+**切换 Mac：** 在 iPhone“设置 → Mac”选择“更换 Mac”或“移除配对”。旧 Mac 不可达时，先阅读残留通知提示，再选择忘记旧 Mac 并继续。旧 Mac 恢复可用后，在其“设备”页移除原配对。
 
 ## 诊断与隐私
 
-在 Mac 菜单或 iPhone 的 **Diagnostics** 中使用 **Copy diagnostics**。诊断不会自动上传；分享前请检查复制的信息，不要公开凭据或敏感的项目、事件内容。
+在 Mac 使用“复制诊断”，或在 iPhone“设置 → 诊断”刷新并复制诊断。诊断不会自动上传；分享前请检查内容，不要公开凭据或敏感的项目与事件内容。
 
-局域网与云端处理、存储、权限、保留和删除的说明见 [AckPulse 隐私政策](PRIVACY.zh-CN.md)。
+数据处理、存储、权限、保留与删除详情见 [AckPulse 隐私政策](PRIVACY.zh-CN.md)。

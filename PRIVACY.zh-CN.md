@@ -2,7 +2,7 @@
 
 [English](PRIVACY.md)
 
-**生效日期：2026 年 9 月 5 日**
+**生效日期：2026 年 9 月 12 日**
 
 本政策说明当前 AckPulse iPhone、Apple Watch 和 Mac 测试版的数据处理方式。AckPulse 不要求注册 AckPulse 账户。
 
@@ -30,6 +30,7 @@ AckPulse 不会将数据用于广告或分析，不会出售数据，也不会�
 
 ## 权限
 
+- **相机（可选）：** 扫描 Mac 显示的配对二维码。扫描在 iPhone 本地完成，AckPulse 不保存或上传相机图像。拒绝相机权限后仍可手动配对。
 - **本地网络：** 发现并连接 AckPulse for Mac、接收事件详情和返回决定。
 - **通知：** 在 iPhone 上显示提醒与操作，并通过 Apple 的通知镜像在 Apple Watch 上显示。
 
@@ -37,12 +38,13 @@ AckPulse 不会将数据用于广告或分析，不会出售数据，也不会�
 
 ## 诊断
 
-诊断保存在本地，不会自动上传。iPhone 为最近的诊断记录提供 **Clear** 操作；Mac 和 iPhone 提供 **Copy diagnostics** 操作。只有在你主动分享时，复制的信息才会离开设备。分享前请检查内容，不要公开凭据或敏感的项目、事件内容。
+诊断保存在本地，不会自动上传。iPhone“设置 → 诊断 → 技术详情”提供清除日志操作；Mac 提供“复制诊断”，iPhone 诊断页提供刷新并复制诊断操作。只有在你主动分享时，复制的信息才会离开设备。分享前请检查内容，不要公开凭据或敏感的项目、事件内容。
 
 ## 保留与删除
 
-- 本地信息会一直保留，直到你使用 AckPulse 控件移除它或删除相应 App 数据。
-- iPhone 上的 **Remove pairing** 会请求可访问的 Mac 撤销配对和通知登记，再清除 iPhone 当前配对。你也可以在 Mac 的 **Paired iPhones** 中移除相应 iPhone。
+- 最近事件及详情在本地保留七天。未结束审批不按此期限淘汰；已结束请求从结束时开始计算保留窗口。iPhone 记录缓存受设备文件保护并排除云备份；移除或更换手机配对会清除其本地记录缓存，Mac 历史独立保留。
+- 配对和设置等其他本地信息会保留，直到你使用 AckPulse 控件移除它或删除相应 App 数据。
+- iPhone 上的 **Remove pairing** 会请求可访问的 Mac 撤销配对和通知登记，再清除 iPhone 当前配对。你也可以在 Mac 的“设备”页中移除相应 iPhone。
 - 如果旧 Mac 无法访问，而你选择 **Forget previous Mac and continue**，只会清除 iPhone 本地配对。旧 Mac 恢复可用后，请在旧 Mac 上移除该 iPhone；在此之前，仍可能收到残留的通用通知。
 - 移除配对不会清除 Mac 审批历史或其他全部本地 App 数据。如需删除其余 Mac 数据，请先停用 AckPulse 的 Claude Code 集成并退出 AckPulse，再删除 AckPulse 的本地 App 数据；如有需要也可同时删除 App。
 - iPhone 安全存储中的部分设备本地配对和安装信息可能在卸载 App 后继续保留。条件允许时，请在卸载前先移除配对。如果安装标识仍被保留，它只会留在该 iPhone 上，不通过 iCloud 同步，也只用于 AckPulse 功能。

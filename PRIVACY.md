@@ -2,7 +2,7 @@
 
 [简体中文](PRIVACY.zh-CN.md)
 
-**Effective date: September 5, 2026**
+**Effective date: September 12, 2026**
 
 This policy describes the current AckPulse beta for iPhone, Apple Watch, and Mac. AckPulse does not require an AckPulse account.
 
@@ -30,19 +30,21 @@ AckPulse does not use data for advertising or analytics, does not sell data, and
 
 ## Permissions
 
+- **Camera (optional):** scans the pairing QR code displayed by your Mac. Scanning happens on the iPhone; AckPulse does not save or upload camera images. You can pair manually without camera permission.
 - **Local Network:** discovers and connects to AckPulse for Mac, receives event details, and returns decisions.
 - **Notifications:** displays alerts and actions on iPhone and, through Apple's notification mirroring, Apple Watch.
 
-You can revoke either permission in iPhone Settings. Features that depend on that permission will stop working.
+You can revoke any of these permissions in iPhone Settings. Features that depend on that permission will stop working.
 
 ## Diagnostics
 
-Diagnostics are stored locally and are not automatically uploaded. The iPhone provides a **Clear** action for recent diagnostic entries. The Mac and iPhone provide **Copy diagnostics** actions; copied information leaves your device only if you choose to share it. Review it before sharing and do not publish credentials or sensitive project or event content.
+Diagnostics are stored locally and are not automatically uploaded. The iPhone provides **Clear logs** under **Settings → Diagnostics → Technical details**. Use **Copy Diagnostics** on Mac or **Refresh and copy diagnostics** in iPhone diagnostics; copied information leaves your device only if you choose to share it. Review it before sharing and do not publish credentials or sensitive project or event content.
 
 ## Retention and deletion
 
-- Local information remains until you remove it using AckPulse controls or delete the relevant app data.
-- **Remove pairing** on the iPhone asks a reachable Mac to revoke the pairing and its notification registration, then clears the iPhone's current pairing. You can also remove an iPhone under **Paired iPhones** on the Mac.
+- Recent event records and their details are retained locally for seven days. Pending approvals are not removed by this age limit; the retention window for resolved requests starts when they end. iPhone record caches use device file protection and are excluded from cloud backup. Removing or changing the iPhone pairing clears its local record cache; the Mac history is retained independently.
+- Other local information, such as pairing and settings, remains until you remove it using AckPulse controls or delete the relevant app data.
+- **Remove pairing** on the iPhone asks a reachable Mac to revoke the pairing and its notification registration, then clears the iPhone's current pairing. You can also remove an iPhone under **Devices** on the Mac.
 - If an old Mac is unreachable and you choose **Forget previous Mac and continue**, only the iPhone's local pairing is cleared. Remove the iPhone from the old Mac when it becomes available; until then, residual generic notifications may continue.
 - Removing a pairing does not erase Mac approval history or all other local app data. To remove the remaining Mac data, first disable the AckPulse Claude Code integration, quit AckPulse, and delete AckPulse's local app data and the app if desired.
 - Some device-local pairing and installation information kept in secure device storage may remain after uninstalling the iPhone app. Remove the pairing before uninstalling when possible. If retained, the installation identifier remains only on that iPhone, is not synchronized through iCloud, and is used only for AckPulse functionality.
