@@ -16,7 +16,7 @@ AckPulse 将 Mac 上 coding agent 的通知与权限审批发送到 iPhone 和 A
 
 ## 下载
 
-下载已签名并公证的 [AckPulse for Mac 0.1.3 DMG](../../releases/tag/0.1.3)。配套版本为 Mac **0.1.3 (3)** 与 iPhone、Watch TestFlight 构建 **0.1.3 (1)**。测试前一起更新三端，不支持与旧版混用。
+下载已签名并公证的 [AckPulse for Mac 0.1.3 DMG](../../releases/tag/0.1.3)。配套版本为 Mac **0.1.3 (4)** 与 iPhone、Watch TestFlight 构建 **0.1.3 (2)**。测试前一起更新三端，不支持与旧版混用。
 
 TestFlight 是否可安装取决于你所在的测试组及 Apple 的处理或审核状态。下载 Mac 版本不会自动获得 iPhone 测试资格。
 

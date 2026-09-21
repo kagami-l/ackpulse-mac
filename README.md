@@ -16,7 +16,7 @@ AckPulse brings notifications and permission approvals from coding agents on you
 
 ## Download
 
-Download the signed and notarized [AckPulse for Mac 0.1.3 DMG](../../releases/tag/0.1.3). Use Mac **0.1.3 (3)** with iPhone and Watch TestFlight build **0.1.3 (1)**. Update all three apps together before testing; older versions are not a supported combination.
+Download the signed and notarized [AckPulse for Mac 0.1.3 DMG](../../releases/tag/0.1.3). Use Mac **0.1.3 (4)** with iPhone and Watch TestFlight build **0.1.3 (2)**. Update all three apps together before testing; older versions are not a supported combination.
 
 TestFlight availability depends on your test group and Apple's processing or review status. A Mac release does not itself grant access to the iPhone beta.
 
