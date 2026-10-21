@@ -2,7 +2,7 @@
 
 [简体中文](PRIVACY.zh-CN.md)
 
-**Effective date: September 12, 2026**
+**Effective date: October 21, 2026**
 
 This policy describes the current AckPulse beta for iPhone, Apple Watch, and Mac. AckPulse does not require an AckPulse account.
 
@@ -10,13 +10,15 @@ This policy describes the current AckPulse beta for iPhone, Apple Watch, and Mac
 
 AckPulse keeps its working data primarily on your devices. This includes routed project paths, commands and event details, approval state and decisions, pairing information, device labels and technical identifiers, settings, and diagnostics.
 
+When active session display is enabled, AckPulse also processes session titles, short prompt summaries, project paths and activity status from the agents on your Mac. It reads session titles from those agents' local data and shares the list with your paired devices over the local network. The list is not added to saved event history or sent through the cloud notification service.
+
 After pairing, the iPhone communicates directly with the Mac over the local network to receive event details and return approval decisions. This traffic is not automatically uploaded to AckPulse. The local connection uses unencrypted HTTP, so pair and use AckPulse only on a trusted network.
 
 ## Notifications and service providers
 
 To deliver system notifications, including lock-screen and Apple Watch alerts, AckPulse sends the minimum technical identifiers and event-routing information needed for delivery to a cloud infrastructure provider over HTTPS. That provider passes a generic notification to Apple Push Notification service (APNs).
 
-Commands, project and file paths, file contents, approval details, and approval decisions are not included in this cloud notification flow. When possible, the iPhone retrieves those details directly from the paired Mac over the local network.
+Commands, session titles, prompt summaries, project and file paths, file contents, approval details, and approval decisions are not included in this cloud notification flow. When possible, the iPhone retrieves those details directly from the paired Mac over the local network.
 
 The cloud infrastructure may derive country-level information from connection metadata and process limited delivery diagnostics for reliability, security, troubleshooting, and abuse prevention. This country-level information is the coarse location disclosed for AckPulse; AckPulse does not request GPS or device Location Services permission.
 
@@ -46,7 +48,7 @@ Diagnostics are stored locally and are not automatically uploaded. The iPhone pr
 - Other local information, such as pairing and settings, remains until you remove it using AckPulse controls or delete the relevant app data.
 - **Remove pairing** on the iPhone asks a reachable Mac to revoke the pairing and its notification registration, then clears the iPhone's current pairing. You can also remove an iPhone under **Devices** on the Mac.
 - If an old Mac is unreachable and you choose **Forget previous Mac and continue**, only the iPhone's local pairing is cleared. Remove the iPhone from the old Mac when it becomes available; until then, residual generic notifications may continue.
-- Removing a pairing does not erase Mac approval history or all other local app data. To remove the remaining Mac data, first disable the AckPulse Claude Code integration, quit AckPulse, and delete AckPulse's local app data and the app if desired.
+- Removing a pairing does not erase Mac approval history or all other local app data. To remove the remaining Mac data, first disable the AckPulse Claude Code and Codex integrations, quit AckPulse, and delete AckPulse's local app data and the app if desired.
 - Some device-local pairing and installation information kept in secure device storage may remain after uninstalling the iPhone app. Remove the pairing before uninstalling when possible. If retained, the installation identifier remains only on that iPhone, is not synchronized through iCloud, and is used only for AckPulse functionality.
 - AckPulse currently retains its cloud delivery logs for up to 3 days. Service providers may separately retain connection or platform metadata under their own terms. AckPulse does not maintain a user account or cloud user profile.
 
