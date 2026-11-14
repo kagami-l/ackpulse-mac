@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md)
 
-AckPulse brings notifications and permission approvals from Claude Code and Codex on your Mac to iPhone and Apple Watch.
+AckPulse brings notifications and permission approvals from Claude Code and Codex on your Mac to iPhone and Apple Watch. After the agent replies, you can also send it a message from iPhone or Apple Watch.
 
 This repository publishes the Mac app's releases. Downloads, help and the recommended version are on [ackpulse.cc](https://ackpulse.cc/).
 
@@ -15,15 +15,16 @@ This repository publishes the Mac app's releases. Downloads, help and the recomm
 
 Download the signed and notarized Mac app from [ackpulse.cc](https://ackpulse.cc/). [Releases](../../releases) carry the same DMG files with their SHA-256 checksums. The iPhone app, with its optional Apple Watch app, is distributed through the App Store; see the website for availability.
 
-AckPulse 1.x on Mac, iPhone and Apple Watch can be mixed, with newer features limited by the older app. The 0.1.x beta builds are not compatible with 1.x; update every device to 1.x.
+AckPulse 1.x on Mac, iPhone and Apple Watch can be mixed, with newer features limited by the older app; sending messages needs 1.1 or later on both iPhone and Mac. The 0.1.x beta builds are not compatible with 1.x; update every device to 1.x.
 
 ## Install and connect
 
 1. Open the DMG, drag **AckPulse** into **Applications** and eject the disk image. Open AckPulse from Applications; do not run it from inside the DMG.
 2. On Mac, open **Devices → Add iPhone** and choose **Generate Pairing Code**.
 3. On iPhone, scan the QR code, or connect manually with the address, port and six-digit code shown on Mac. Allow Local Network access and Notifications; camera access is only needed for scanning.
-4. On Mac, add your working folder under **Projects** and connect Claude Code or Codex under **Integrations**. For Codex, review and trust AckPulse's hooks in Codex when prompted, then check the integration status in AckPulse.
+4. On Mac, add your working folder under **Projects** and connect Claude Code or Codex under **Integrations**, keeping **Active sessions and messages** on. For Codex, review and trust AckPulse's hooks in Codex when prompted, then check the integration status in AckPulse.
 5. Start a task in that folder. When the agent asks for permission, choose **Allow once** or **Deny** on iPhone or Apple Watch. Allowing may let the requested operation run on your Mac.
+6. After the agent replies, open the reply on iPhone or Apple Watch and send it one message, for example to run the tests again. You can send one message per reply, for a limited time after it.
 
 Claude's terminal prompt remains answerable during remote approval; the first answer wins. Codex waits for a remote answer first, then returns to its configured approval flow if no answer arrives in time. Answer questions and plans in the agent on your Mac.
 
@@ -40,6 +41,7 @@ If AckPulse reports incompatible versions, update the app on the device it names
 - **Cannot connect:** check that AckPulse is running on Mac, Local Network access is allowed on iPhone, and both devices are on the same trusted network. Guest Wi-Fi, device isolation, VPN routing and firewalls can block the connection. Use manual connection with the address and port shown on Mac.
 - **No notifications:** allow Notifications, check Focus settings, then open AckPulse on iPhone and reconnect. Check the iPhone's push registration under **Devices** on Mac.
 - **No approval:** check the project and integration settings. The agent must actually be asking for permission. For Codex, also check hook trust and the remote approval wait time.
+- **Cannot send a message:** messages go to the session's latest reply, one per reply and for a limited time after it. Both iPhone and Mac need AckPulse 1.1 or later, with **Active sessions and messages** on in **Integrations**. If **Active session list** was on for Claude Code before 1.1, turn **Active sessions and messages** off and on again once.
 - **Switch Mac:** use **Settings → Mac** on iPhone to change Mac or remove pairing. **Forget Previous Mac and Continue** clears only the iPhone side; remove that iPhone under **Devices** on the old Mac when it is available.
 
 Use AckPulse only on a trusted network: local traffic uses unencrypted HTTP. Notifications depend on connectivity and system delivery. Approvals need a live request and a connection to the paired Mac; old notifications cannot approve an ended request.

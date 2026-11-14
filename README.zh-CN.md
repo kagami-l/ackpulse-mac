@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-AckPulse 将 Mac 上 Claude Code 和 Codex 的通知与权限审批发送到 iPhone 和 Apple Watch。
+AckPulse 将 Mac 上 Claude Code 和 Codex 的通知与权限审批发送到 iPhone 和 Apple Watch；agent 回复后，还能从 iPhone 或 Apple Watch 给它发一条消息。
 
 本仓库发布 Mac App 的版本。下载、帮助与推荐版本见官网 [ackpulse.cc](https://ackpulse.cc/zh-cn/)。
 
@@ -15,15 +15,16 @@ AckPulse 将 Mac 上 Claude Code 和 Codex 的通知与权限审批发送到 iPh
 
 从[官网](https://ackpulse.cc/zh-cn/)下载已签名并公证的 Mac App；[Releases](../../releases) 提供相同的 DMG 及其 SHA-256 校验值。iPhone App（含可选的 Apple Watch App）通过 App Store 分发，可用情况见官网。
 
-Mac、iPhone 与 Apple Watch 上的 AckPulse 1.x 可以混用，新功能受较旧一端能力限制。0.1.x 测试版与 1.x 不兼容，请将所有设备更新到 1.x。
+Mac、iPhone 与 Apple Watch 上的 AckPulse 1.x 可以混用，新功能受较旧一端能力限制；发消息需要 iPhone 和 Mac 都是 1.1 或更高版本。0.1.x 测试版与 1.x 不兼容，请将所有设备更新到 1.x。
 
 ## 安装与连接
 
 1. 打开 DMG，将 **AckPulse** 拖入“应用程序”，推出磁盘映像后从“应用程序”启动。不要直接在 DMG 内运行。
 2. Mac 打开“设备 → 添加 iPhone”，点“生成配对码”。
 3. iPhone 扫描二维码，或填写 Mac 显示的地址、端口和六位码手动连接；允许本地网络和通知权限。相机权限仅扫码时需要。
-4. 在 Mac“项目”页添加工作文件夹，在“集成”页连接 Claude Code 或 Codex。Codex 还需按提示在 Codex 中审阅并信任 AckPulse Hook，再回到 AckPulse 检查状态。
+4. 在 Mac“项目”页添加工作文件夹，在“集成”页连接 Claude Code 或 Codex，保持“活跃会话与发送消息”开启。Codex 还需按提示在 Codex 中审阅并信任 AckPulse Hook，再回到 AckPulse 检查状态。
 5. 在该文件夹中开始任务。当 agent 请求权限时，在 iPhone 或 Watch 选择“允许一次”或“拒绝”。允许可能让对应操作在 Mac 执行。
+6. agent 回复后，在 iPhone 或 Watch 上打开这条回复，可以给它发一条消息，比如让它再跑一次测试。每条回复之后限时可发一条。
 
 Claude 的终端提示仍可回答，先响应者生效。Codex 会先等待远端回答，超时后交回其原有审批流程。提问和计划需回到 Mac 上的 agent 作答。
 
@@ -40,6 +41,7 @@ Mac App 目前没有自动更新。先处理完等待中的审批，从菜单选
 - **无法连接：** 确认 Mac 上的 AckPulse 正在运行、iPhone 已允许本地网络，且两端在同一可信网络。访客 Wi-Fi、设备隔离、VPN 路由和防火墙都可能阻止连接；可按 Mac 显示的地址与端口手动连接。
 - **没有通知：** 允许通知并检查专注模式，再打开 iPhone App 重新连接；在 Mac“设备”页检查该 iPhone 的推送登记。
 - **没有审批：** 检查项目与集成设置，确认 agent 确实正在请求权限；Codex 还需检查 Hook 信任状态及远程等待时间。
+- **发不了消息：** 消息只能发在会话最新一条回复上，每条回复之后限时一条。iPhone 与 Mac 都需要 1.1 或更高版本，并在“集成”页开启“活跃会话与发送消息”。1.1 之前就开着 Claude Code“活跃会话名单”的，需要把“活跃会话与发送消息”关掉再打开一次。
 - **更换 Mac：** 在 iPhone“设置 → Mac”更换或移除配对。“在本机忘记旧 Mac 并继续”只清除 iPhone 一侧；旧 Mac 可用时，请在其“设备”页移除该 iPhone。
 
 请只在可信网络使用：局域网通信使用未加密 HTTP。通知受网络和系统投递影响；审批需要仍有效的请求及与配对 Mac 的连接，旧通知不能批准已结束请求。
