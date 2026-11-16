@@ -15,7 +15,7 @@ AckPulse 将 Mac 上 Claude Code 和 Codex 的通知与权限审批发送到 iPh
 
 从[官网](https://ackpulse.cc/zh-cn/)下载已签名并公证的 Mac App；[Releases](../../releases) 提供相同的 DMG 及其 SHA-256 校验值。iPhone App（含可选的 Apple Watch App）通过 App Store 分发，可用情况见官网。
 
-Mac、iPhone 与 Apple Watch 上的 AckPulse 1.x 可以混用，新功能受较旧一端能力限制；发消息需要 iPhone 和 Mac 都是 1.1 或更高版本。0.1.x 测试版与 1.x 不兼容，请将所有设备更新到 1.x。
+Mac、iPhone 与 Apple Watch 上的 AckPulse 1.x 可以混用，新功能受较旧一端能力限制；发消息需要 iPhone 和 Mac 都是 1.1 或更高版本。Mac 与 iPhone 的版本号不必相同，各自保持最新即可。0.1.x 测试版与 1.x 不兼容，请将所有设备更新到 1.x。
 
 ## 安装与连接
 
@@ -30,7 +30,9 @@ Claude 的终端提示仍可回答，先响应者生效。Codex 会先等待远�
 
 ## 更新
 
-Mac App 目前没有自动更新。先处理完等待中的审批，从菜单选择“退出 AckPulse”；关闭窗口不会退出服务。用新 DMG 中的 App 替换“应用程序”中的 AckPulse，推出映像后重新打开。配对、项目、偏好和历史会保留。
+1.1.1 及以后的版本每天检查一次新版本。发现新版本时，菜单栏面板和“概览”会出现提示；在“设置 → 版本与更新”点“安装更新”，App 下载、验证并安装后自动重新打开。也可以在那里或 AckPulse 菜单中选择“检查更新…”，或关掉“自动检查更新”。有等待中的审批时，App 等审批处理完再重启。
+
+1.1.0 及更早的版本不能自己更新，需要手动安装一次 1.1.1 或更新的版本；App 内更新反复失败时也按这个步骤：先处理完等待中的审批，从菜单选择“退出 AckPulse”；关闭窗口不会退出服务。用新 DMG 中的 App 替换“应用程序”中的 AckPulse，推出映像后重新打开。两种方式都会保留配对、项目、偏好和历史。
 
 更新后查看“集成”页的提示：Claude 点击“完成审批配置”；Codex 点击“完成 Codex 配置”，再在 Codex 中信任更新后的 Hook。如果 agent 仍指向另一份 AckPulse，Claude 使用“检查并修复…”，Codex 使用“修复 Codex 连接”。
 
@@ -50,4 +52,4 @@ Mac App 目前没有自动更新。先处理完等待中的审批，从菜单选
 
 见 [AckPulse 支持](https://ackpulse.cc/zh-cn/support/)，或发邮件至 [hi@ackpulse.cc](mailto:hi@ackpulse.cc)。可复现的问题请在 [Issues](../../issues) 报告；Issues 公开可见，发布前请移除凭据和私密的项目、事件信息。
 
-诊断保存在本地，只有主动复制并分享时才会离开设备，分享前请检查内容。详见[隐私政策](https://ackpulse.cc/zh-cn/privacy/)（本仓库保留[副本](PRIVACY.zh-CN.md)）与[条款](https://ackpulse.cc/zh-cn/terms/)。
+诊断保存在本地，只有主动复制并分享时才会离开设备，分享前请检查内容。为了检查更新，Mac App 每天向 `downloads.ackpulse.cc` 请求一次更新信息，你确认安装后才下载更新包；可以在设置里关掉自动检查。详见[隐私政策](https://ackpulse.cc/zh-cn/privacy/)（本仓库保留[副本](PRIVACY.zh-CN.md)）与[条款](https://ackpulse.cc/zh-cn/terms/)。

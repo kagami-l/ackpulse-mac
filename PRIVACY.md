@@ -4,7 +4,7 @@
 
 > This is a copy of the privacy policy published at [ackpulse.cc/privacy](https://ackpulse.cc/privacy/). If the two differ, the website version applies.
 
-**Last updated: November 13, 2026**
+**Last updated: November 16, 2026**
 
 This policy covers the AckPulse apps for Mac, iPhone and Apple Watch. “We” means the developer of AckPulse, the seller shown for AckPulse on the App Store. Contact: [hi@ackpulse.cc](mailto:hi@ackpulse.cc).
 
@@ -25,11 +25,13 @@ After an Agent replies, you can send one message to that session from your iPhon
 
 Your iPhone retrieves details from your Mac and sends it approval decisions and messages over the local network; this traffic does not pass through our servers. The local connection uses unencrypted HTTP, so pair and use AckPulse only on a trusted network.
 
-## 2. Notifications and service providers
+## 2. Notifications, updates and service providers
 
 To alert you while you are away, your Mac sends a minimal request over HTTPS to our notification relay, hosted by a cloud infrastructure provider, which passes a generic alert to Apple Push Notification service (APNs). The request contains only the Apple push token, limited device and event identifiers, the alert type and a pairing identifier. It never includes commands, session titles, prompt summaries, Agent replies, your messages, project or file paths, file contents, approval details or decisions.
 
 The relay can see your Mac's IP address and the approximate location derived from it, and keeps limited delivery logs for operation, security and troubleshooting. We do not request device location permission.
+
+By default, the Mac app checks our download service for updates once a day, and downloads an update only after you choose to install it. These checks contain no device identifiers, projects or session content; the cloud infrastructure provider hosting the service can see your IP address, app version and system language preferences. You can turn off automatic checks in the Mac app's settings.
 
 We use a cloud infrastructure provider, [Apple](https://www.apple.com/legal/privacy/) and an email provider, and only choose providers that protect the information they receive to a standard equivalent to this policy. They may process information outside your country or region.
 

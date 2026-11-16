@@ -15,7 +15,7 @@ This repository publishes the Mac app's releases. Downloads, help and the recomm
 
 Download the signed and notarized Mac app from [ackpulse.cc](https://ackpulse.cc/). [Releases](../../releases) carry the same DMG files with their SHA-256 checksums. The iPhone app, with its optional Apple Watch app, is distributed through the App Store; see the website for availability.
 
-AckPulse 1.x on Mac, iPhone and Apple Watch can be mixed, with newer features limited by the older app; sending messages needs 1.1 or later on both iPhone and Mac. The 0.1.x beta builds are not compatible with 1.x; update every device to 1.x.
+AckPulse 1.x on Mac, iPhone and Apple Watch can be mixed, with newer features limited by the older app; sending messages needs 1.1 or later on both iPhone and Mac. Mac and iPhone version numbers do not need to match; keep each app up to date. The 0.1.x beta builds are not compatible with 1.x; update every device to 1.x.
 
 ## Install and connect
 
@@ -30,7 +30,9 @@ Claude's terminal prompt remains answerable during remote approval; the first an
 
 ## Update
 
-The Mac app has no automatic updater. Finish pending approvals and choose **Quit AckPulse**; closing the window keeps the service running. Replace AckPulse in Applications with the app from the new DMG, eject the image and reopen AckPulse. Pairing, projects, preferences and history are kept.
+AckPulse 1.1.1 and later check for a new version once a day. When one is available, the menu bar panel and **Overview** show a notice. Open **Settings → Version and updates** and choose **Install Update**; AckPulse downloads, verifies and installs it, then reopens. You can also choose **Check for Updates…** there or in the AckPulse menu, or turn off **Check for updates automatically**. If approvals are pending, AckPulse waits until they are handled before it restarts.
+
+AckPulse 1.1.0 and earlier cannot update themselves, so install 1.1.1 or later by hand once. Use the same steps if an in-app update keeps failing: finish pending approvals and choose **Quit AckPulse**; closing the window keeps the service running. Replace AckPulse in Applications with the app from the new DMG, eject the image and reopen AckPulse. Either way, pairing, projects, preferences and history are kept.
 
 After updating, follow any prompts in **Integrations**: **Complete Approval Setup** for Claude, or **Complete Codex Setup** for Codex followed by trusting the updated hooks in Codex. If an agent still points to another copy of AckPulse, use **Review and Repair…** for Claude or **Repair Codex Connection** for Codex.
 
@@ -50,4 +52,4 @@ Use AckPulse only on a trusted network: local traffic uses unencrypted HTTP. Not
 
 See [AckPulse Support](https://ackpulse.cc/support/) or email [hi@ackpulse.cc](mailto:hi@ackpulse.cc). Report reproducible problems in [Issues](../../issues); issues are public, so remove credentials and private project or event details first.
 
-Diagnostics stay on your devices unless you choose to copy and share them; review copied information before sharing. Read the [Privacy Policy](https://ackpulse.cc/privacy/) (a [copy](PRIVACY.md) is kept here) and the [Terms](https://ackpulse.cc/terms/).
+Diagnostics stay on your devices unless you choose to copy and share them; review copied information before sharing. To check for updates, the Mac app requests update information from `downloads.ackpulse.cc` once a day and downloads an update only after you choose to install it; you can turn automatic checks off in Settings. Read the [Privacy Policy](https://ackpulse.cc/privacy/) (a [copy](PRIVACY.md) is kept here) and the [Terms](https://ackpulse.cc/terms/).
